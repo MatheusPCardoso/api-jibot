@@ -1,4 +1,4 @@
-# BotAI
+# Jibot
 
 BotAI é um backend desenvolvido com [NestJS](https://nestjs.com/) para gerenciar bots. Este projeto utiliza Docker para facilitar o setup e a execução.
 
