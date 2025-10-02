@@ -1,0 +1,31 @@
+model Customer {
+    id                  String                       @id @default(auto()) @map("_id") @db.ObjectId
+    accountId           String                       @db.ObjectId
+    firstName           String
+    lastName            String
+    email               String
+    contactInfo         ContactInfo
+    paymentProviderInfo CustomerPaymentProviderInfo?
+    createdAt           DateTime                     @default(now())
+    updatedAt           DateTime                     @updatedAt
+
+    account      Account        @relation(fields: [accountId], references: [id])
+    transaction  Transaction[]
+    subscription Subscription[]
+
+    @@unique([email, accountId])
+    @@index([accountId])
+}
+
+type ContactInfo {
+    telegram Telegram
+}
+
+type Telegram {
+    id    String
+    photo String?
+}
+
+type CustomerPaymentProviderInfo {
+    id String
+}

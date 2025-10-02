@@ -1,0 +1,28 @@
+model Account {
+    id        String         @id @default(auto()) @map("_id") @db.ObjectId
+    name      String
+    photo     String
+    config    AccountConfig?
+    createdAt DateTime       @default(now())
+    updatedAt DateTime       @updatedAt
+
+    customers    Customer[]
+    transactions Transaction[]
+    plan         Plan[]
+    subscription Subscription[]
+}
+
+type OAuthResponse {
+    accessToken String?
+    publicKey String?
+    refreshToken String?
+    liveMode Boolean?
+    userId Int?
+    tokenType String?
+    expiresIn Int?
+    scope String?
+}
+
+type AccountConfig {
+    mercadoPago OAuthResponse?
+}

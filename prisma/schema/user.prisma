@@ -1,0 +1,10 @@
+model User {
+    id           String   @id @default(auto()) @map("_id") @db.ObjectId
+    accountIds   String[] @db.ObjectId
+    firstName    String
+    lastName     String
+    email        String   @unique
+    passwordHash String
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+}

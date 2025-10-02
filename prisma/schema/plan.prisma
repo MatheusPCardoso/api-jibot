@@ -1,0 +1,16 @@
+model Plan {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    name        String
+    description String
+    amount      Int
+    accountId   String   @db.ObjectId
+    duration    Int
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    account Account @relation(fields: [accountId], references: [id])
+
+    subscription Subscription[]
+
+    @@index([accountId])
+}
